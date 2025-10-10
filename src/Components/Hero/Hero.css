@@ -7,6 +7,12 @@
 
 .hero img{
     margin-top: 150px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    bottom: 0;
 }
 
 .hero h1{
