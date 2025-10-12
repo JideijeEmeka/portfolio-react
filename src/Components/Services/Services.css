@@ -29,7 +29,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    padding: 60px;
+    padding: 30px;
     border: 2px solid white;
     border-radius: 10px;
     transition: 0.4s;
@@ -44,12 +44,12 @@
 }
 
 .services-format h3{
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 600;
 }
 
 .services-format h2{
-    font-size: 38px;
+    font-size: 28px;
     font-weight: 800;
     background: linear-gradient(270deg, #DF8908 50%, #B415FF 100%);
     background-clip: text;
@@ -58,8 +58,8 @@
 }
 
 .services-format p{
-    font-size: 24px;
-    line-height: 40px;
+    font-size: 20px;
+    line-height: 30px;
     color: #d4d4d4;
     max-width: 300px;
 }
@@ -97,13 +97,13 @@
         padding: 32px;
     }
     .services-format h3{
-        font-size: 20px;
+        font-size: 18px;
     }
     .services-format h2{
-        font-size: 28px;
+        font-size: 20px;
     }
     .services-format p{
-        font-size: 18px;
+        font-size: 17px;
         line-height: 32px;
         max-width: 300px;
     }
