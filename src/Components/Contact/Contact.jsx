@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Contact.css'
 import theme_pattern from '../../assets/theme_pattern.svg'
 import mail_icon from '../../assets/mail_icon.svg'
@@ -6,11 +6,44 @@ import location_icon from '../../assets/location_icon.svg'
 import call_icon from '../../assets/call_icon.svg'
 
 const Contact = () => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [errors, setErrors] = useState({})
+
+    const validateForm = (formData) => {
+        const newErrors = {}
+        
+        if (!formData.get('name')?.trim()) {
+            newErrors.name = 'Name is required'
+        }
+        
+        if (!formData.get('email')?.trim()) {
+            newErrors.email = 'Email is required'
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.get('email'))) {
+            newErrors.email = 'Please enter a valid email address'
+        }
+        
+        if (!formData.get('message')?.trim()) {
+            newErrors.message = 'Message is required'
+        }
+        
+        return newErrors
+    }
 
     const onSubmit = async (event) => {
         event.preventDefault();
+        
+        const formData = new FormData(event.target);
+        const validationErrors = validateForm(formData)
+        
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors)
+            return
+        }
+        
+        setErrors({})
+        setIsLoading(true)
+        
         try {
-          const formData = new FormData(event.target);
           formData.append("access_key", "e4faf47f-ef02-4ea8-8f9a-68577f8fd51c");
       
           const json = JSON.stringify(Object.fromEntries(formData));
@@ -26,12 +59,15 @@ const Contact = () => {
           if (data.success) {
             alert(data.message);            // will show on success
             event.target.reset();
+            setErrors({})
           } else {
             alert(data.message || "Submission failed.");
           }
         } catch (err) {
           alert("Network error. Please try again.");
           console.error(err);
+        } finally {
+          setIsLoading(false)
         }
       };
       
@@ -64,12 +100,42 @@ const Contact = () => {
             </div>
             <form onSubmit={onSubmit} className="contact-right">
                 <label htmlFor=''>Your Name</label>
-                <input type='text' placeholder='Enter your name' name='name' />
+                <input 
+                    type='text' 
+                    placeholder='Enter your name' 
+                    name='name' 
+                    className={errors.name ? 'error' : ''}
+                />
+                {errors.name && <span className="error-message">{errors.name}</span>}
+                
                 <label htmlFor=''>Your Email</label>
-                <input type='email' placeholder='Enter your email' name='email' />
+                <input 
+                    type='email' 
+                    placeholder='Enter your email' 
+                    name='email' 
+                    className={errors.email ? 'error' : ''}
+                />
+                {errors.email && <span className="error-message">{errors.email}</span>}
+                
                 <label htmlFor=''>Write your message here</label>
-                <textarea rows={8} placeholder='Enter your message' name='message' />
-                <button type='submit' className='contact-submit'>Submit now</button>
+                <textarea 
+                    rows={8} 
+                    placeholder='Enter your message' 
+                    name='message' 
+                    className={errors.message ? 'error' : ''}
+                />
+                {errors.message && <span className="error-message">{errors.message}</span>}
+                
+                <button type='submit' className='contact-submit' disabled={isLoading}>
+                    {isLoading ? (
+                        <div className="loader-container">
+                            <div className="loader"></div>
+                            <span>Submitting...</span>
+                        </div>
+                    ) : (
+                        'Submit now'
+                    )}
+                </button>
             </form>
         </div>
     </div>
