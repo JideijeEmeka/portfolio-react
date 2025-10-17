@@ -5,6 +5,20 @@ import workData from '../../assets/mywork_data'
 import arrow_icon from '../../assets/arrow_icon.svg'
 
 const MyWork = () => {
+  const projectUrls = [
+    'https://platnova.com',
+    'https://platnova.com/business',
+    'https://astravestapp.com/'
+  ]
+
+  const handleImageClick = (index) => {
+    window.open(projectUrls[index], '_blank')
+  }
+
+  const handleShowMore = () => {
+    window.open('https://github.com/JideijeEmeka', '_blank')
+  }
+
   return (
     <div id='work' className='mywork'>
         <div className="mywork-title">
@@ -13,10 +27,16 @@ const MyWork = () => {
         </div>
         <div className="mywork-container">
             {workData.map((work, index) => (
-                <img key={index} src={work.w_img} alt='mywork' />
+                <img 
+                    key={index} 
+                    src={work.w_img} 
+                    alt='' 
+                    onClick={() => handleImageClick(index)}
+                    style={{ cursor: 'pointer' }}
+                />
             ))}
         </div>
-        <div className="mywork-showmore">
+        <div className="mywork-showmore" onClick={handleShowMore}>
             <p>Show More</p>
             <img src={arrow_icon} alt='' />
         </div>
