@@ -4,6 +4,7 @@ import theme_pattern from '../../assets/theme_pattern.svg'
 import mail_icon from '../../assets/mail_icon.svg'
 import location_icon from '../../assets/location_icon.svg'
 import call_icon from '../../assets/call_icon.svg'
+import linkedin_icon from '../../assets/linked_in.png'
 
 const Contact = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -99,6 +100,10 @@ const Contact = () => {
           setIsLoading(false)
         }
       };
+
+    const openLinkedin = () => {
+        window.open('https://www.linkedin.com/in/jideije-emeka/', '_blank')
+    }
       
     
   return (
@@ -120,6 +125,10 @@ const Contact = () => {
                         <div className="contact-detail">
                             <img src={call_icon} alt='' />
                             <p>+234 8140087091</p>
+                        </div>
+                        <div className="contact-detail" onClick={openLinkedin}>
+                            <img src={linkedin_icon} alt='' className='linkedin-icon'/>
+                            <p className='linkedin-name'>Emeka Jideije</p>
                         </div>
                         <div className="contact-detail">
                             <img src={location_icon} alt='' />
