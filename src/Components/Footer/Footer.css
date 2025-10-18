@@ -5,6 +5,12 @@
     margin: 50px 170px;
 }
 
+.footer-logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .footer-top{
     display: flex;
     justify-content: space-between;
@@ -67,6 +73,26 @@
 .footer-subscribe:hover{
     transform: scale(1.05);
     transition: 0.3s;
+}
+
+.footer-subscribe:disabled{
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.subscribe-message{
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.subscribe-message.success{
+    color: #4CAF50;
+}
+
+.subscribe-message.error{
+    color: #ff4444;
 }
 
 @media (max-width: 768px) {
