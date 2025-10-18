@@ -54,6 +54,10 @@ const Footer = () => {
         }
       };
 
+      const openGithub = () => {
+        window.open('https://github.com/JideijeEmeka', '_blank')
+    }
+
   return (
     <div className='footer'>
         <div className="footer-logo">
@@ -90,6 +94,7 @@ const Footer = () => {
                 © 2025 Emeka Jideije. All Rights Reserved.
             </p>
             <div className="footer-bottom-right">
+                <p onClick={openGithub} className='github-link'>Github</p>
                 <p><AnchorLink className='anchor-link' href='#services'>My Services</AnchorLink></p>
                 <p><AnchorLink className='anchor-link' href='#work'>Portfolio</AnchorLink></p>
                 <p><AnchorLink className='anchor-link' href='#contact'>Connect with me</AnchorLink></p>
