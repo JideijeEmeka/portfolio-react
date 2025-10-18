@@ -23,7 +23,7 @@ const Hero = () => {
   return (
     <div id='home' className='hero'>
         <img src={me_dev} alt='hero' />
-        <h1><span>I'm Emeka Jideije,</span> Flutter engineer and web frontend developer based in Nigeria</h1>
+        <h1><span>I'm Emeka Jideije,</span> Flutter engineer and Web Frontend developer based in Nigeria</h1>
         <p>I'm a flutter engineer and web frontend developer from Enugu, Nigeria with 4 years of experience in multiple companies 
             like Adastra Tech, Platnova, and Core Platforms.</p>
             <div className="hero-action">
