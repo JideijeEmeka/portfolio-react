@@ -29,6 +29,35 @@ const Contact = () => {
         return newErrors
     }
 
+    const validateField = (name, value) => {
+        const trimmedValue = value?.trim()
+        
+        switch (name) {
+            case 'name':
+                return trimmedValue ? '' : 'Name is required'
+            case 'email':
+                if (!trimmedValue) return 'Email is required'
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedValue)) {
+                    return 'Please enter a valid email address'
+                }
+                return ''
+            case 'message':
+                return trimmedValue ? '' : 'Message is required'
+            default:
+                return ''
+        }
+    }
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target
+        const fieldError = validateField(name, value)
+        
+        setErrors(prevErrors => ({
+            ...prevErrors,
+            [name]: fieldError
+        }))
+    }
+
     const onSubmit = async (event) => {
         event.preventDefault();
         
@@ -105,6 +134,7 @@ const Contact = () => {
                     placeholder='Enter your name' 
                     name='name' 
                     className={errors.name ? 'error' : ''}
+                    onChange={handleInputChange}
                 />
                 {errors.name && <span className="error-message">{errors.name}</span>}
                 
@@ -114,6 +144,7 @@ const Contact = () => {
                     placeholder='Enter your email' 
                     name='email' 
                     className={errors.email ? 'error' : ''}
+                    onChange={handleInputChange}
                 />
                 {errors.email && <span className="error-message">{errors.email}</span>}
                 
@@ -123,6 +154,7 @@ const Contact = () => {
                     placeholder='Enter your message' 
                     name='message' 
                     className={errors.message ? 'error' : ''}
+                    onChange={handleInputChange}
                 />
                 {errors.message && <span className="error-message">{errors.message}</span>}
                 
