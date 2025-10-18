@@ -65,6 +65,19 @@
     gap: 20px;
 }
 
+.contact-detail img{
+    width: 33px;
+}
+
+.contact-detail .linkedin-name{
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.contact-detail .linkedin-icon{
+    cursor: pointer;
+}
+
 .contact-right{
     display: flex;
     flex-direction: column;
