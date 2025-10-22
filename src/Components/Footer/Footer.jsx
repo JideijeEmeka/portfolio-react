@@ -43,6 +43,9 @@ const Footer = () => {
           if (data.success) {
             setSubscribeMessage('Thank you for subscribing!')
             setEmail('')
+            setTimeout(() => {
+              setSubscribeMessage('')
+            }, 5000)
           } else {
             setSubscribeMessage(data.message || "Subscription failed.")
           }
